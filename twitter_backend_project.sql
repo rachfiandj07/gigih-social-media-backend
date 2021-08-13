@@ -4,7 +4,7 @@
 -- https://tableplus.com/
 --
 -- Database: twitter_backend_project
--- Generation Time: 2021-08-13 01:43:50.6300
+-- Generation Time: 2021-08-13 12:47:32.3580
 -- -------------------------------------------------------------
 
 
@@ -55,6 +55,7 @@ CREATE TABLE `user_comments` (
   `comment_description` text,
   `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `attachment` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `user_id` (`user_id`),
   KEY `post_id` (`post_id`),
@@ -68,6 +69,7 @@ CREATE TABLE `user_posts` (
   `description` text,
   `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `attachment` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`post_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `user_posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
