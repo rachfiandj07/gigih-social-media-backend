@@ -8,7 +8,7 @@ class Users
     end
 
     def valid?
-        return false if @username.nil? || @bio.nil?
+        return false if @username.nil? || @bio.nil? || @email.nil?
 
         true
     end
