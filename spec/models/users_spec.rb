@@ -12,6 +12,14 @@ describe Users do
             end
         end
 
+        context 'given invalid params' do
+            it 'should return false when username is nil' do
+                users = Users.new(nil, 'Hello', 'test@gmail.com')
+
+                expect(users.valid?).to eq(false)
+            end
+        end
+
     end
 
 end
