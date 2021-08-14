@@ -8,6 +8,6 @@ Developing a social media application which can be used to share information wit
 ### Installation
 
 1. Fork and clone repo to your local machine
-2. Use 'bundle install' to install dependencies.
+2. Use `bundle install` to install dependencies.
 3. Create `.env` file based on `.env.example`
 4. `source .env` file
