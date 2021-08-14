@@ -2,14 +2,20 @@ require_relative '../../models/users.rb'
 
 describe Users do
 
-    describe 'valid?' do
-
-        context 'given valid params' do
+    describe 'initialize' do
+        it 'should return not nil' do
             it 'should return not nil' do
                 users = Users.new('@naufalrdj', 'Hello', 'test@gmail.com')
 
                 expect(users).not_to be_nil
             end
+        end
+    end
+
+    describe 'valid?' do
+
+        context 'given valid params' do
+
         end
 
         context 'given invalid params' do
