@@ -4,11 +4,9 @@ describe Users do
 
     describe 'initialize' do
         it 'should return not nil' do
-            it 'should return not nil' do
-                users = Users.new('@naufalrdj', 'Hello', 'test@gmail.com')
+            users = Users.new('@naufalrdj', 'Hello', 'test@gmail.com')
 
-                expect(users).not_to be_nil
-            end
+            expect(users).not_to be_nil
         end
     end
 
