@@ -27,6 +27,13 @@ describe Users do
                 @users.register
             end
         end
+        context 'given invalid params' do
+            it 'should not save user data' do
+                users = Users.new(nil, nil, nil)
+
+                expect(users.register).to eq(false)
+            end
+        end
     end
 
     describe 'initialize' do
