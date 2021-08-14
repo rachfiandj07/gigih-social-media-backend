@@ -18,6 +18,11 @@ describe Users do
 
                 expect(users.valid?).to eq(false)
             end
+            it 'should return false when bio is nil' do
+                users = Users.new('@naufalrdj', nil, 'test@gmail.com')
+
+                expect(users.valid?).to eq(false)
+            end
         end
 
     end
