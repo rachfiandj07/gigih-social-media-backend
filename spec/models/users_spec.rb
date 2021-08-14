@@ -13,7 +13,11 @@ describe Users do
     describe 'valid?' do
 
         context 'given valid params' do
-
+            it 'should return true' do
+                users = Users.new('@naufalrdj', 'Hello', 'test@gmail.com')
+    
+                expect(users.valid?).to eq(true)
+            end
         end
 
         context 'given invalid params' do
