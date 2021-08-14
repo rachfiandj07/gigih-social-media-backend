@@ -23,6 +23,11 @@ describe Users do
 
                 expect(users.valid?).to eq(false)
             end
+            it 'should return false when email is nil' do
+                users = Users.new('@naufalrdj', 'Hello', nil)
+
+                expect(users.valid?).to eq(false)
+            end
         end
 
     end
