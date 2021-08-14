@@ -1,3 +1,5 @@
+require_relative '../config/connection.rb'
+
 class Users
     attr_accessor :username, :bio, :email
 
