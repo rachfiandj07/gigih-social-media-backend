@@ -1,6 +1,19 @@
 require_relative '../../models/users.rb'
 
 describe Users do
+    before :each do
+        @stub_client = double()
+        @users = Users.new('@naufalrdj', 'Hello', 'test@gmail.com')
+        @response = {
+            "user_id" => 1,
+            "username" => "naufalrdj",
+            "bio" => "Hello",
+            "email" => "test@gmail.com",
+            "createdAt" => "2021-08-15 00:51:03",
+            "updatedAt" => "2021-08-15 00:51:03"
+        }
+        allow(Mysql2::Client).to receive(:new).and_return(@stub_client)
+    end
 
     describe 'initialize' do
         it 'should return not nil' do
