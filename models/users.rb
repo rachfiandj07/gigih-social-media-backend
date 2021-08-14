@@ -6,4 +6,10 @@ class Users
         @bio = bio
         @email = email
     end
+
+    def valid?
+        return false if @username.nil?
+
+        true
+    end
 end
