@@ -9,6 +9,14 @@ class Users
         @email = email
     end
 
+    def register
+        client = create_db_client
+        insert = client.query("INSERT INTO users (username, bio, email) VALUES ('#{@username}','#{@bio}','#{@email}')")
+        response = client.query("SELECT * FROM users WHERE LAST_INSERT_ID()")
+
+        data = response
+    end
+
     def valid?
         return false if @username.nil? || @bio.nil? || @email.nil?
 
