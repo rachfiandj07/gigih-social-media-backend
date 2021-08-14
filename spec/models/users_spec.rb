@@ -15,6 +15,20 @@ describe Users do
         allow(Mysql2::Client).to receive(:new).and_return(@stub_client)
     end
 
+    describe 'register' do
+        context 'given valid params' do
+            it 'should save user data' do
+                stub_query = "INSERT INTO users (username, bio, email) VALUES ('#{@users.username}','#{@users.bio}','#{@users.email}')"
+                stub_query_response = "SELECT * FROM users WHERE LAST_INSERT_ID()"
+
+                expect(@stub_client).to receive(:query).with(stub_query)
+                expect(@stub_client).to receive(:query).with(stub_query_response).and_return([@response])
+
+                @users.register
+            end
+        end
+    end
+
     describe 'initialize' do
         it 'should return not nil' do
             users = Users.new('@naufalrdj', 'Hello', 'test@gmail.com')
