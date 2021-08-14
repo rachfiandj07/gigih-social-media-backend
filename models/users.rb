@@ -2,11 +2,15 @@ require_relative '../config/connection.rb'
 
 class Users
     attr_accessor :username, :bio, :email
+    attr_reader :user_id, :createdAt, :updatedAt
 
-    def initialize(username, bio, email)
+    def initialize(user_id, username, bio, email, createdAt, updatedAt)
+        @user_id = user_id
         @username = username
         @bio = bio
         @email = email
+        @createdAt = createdAt
+        @updatedAt = updatedAt
     end
 
     def register
