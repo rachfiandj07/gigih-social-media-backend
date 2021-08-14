@@ -10,6 +10,8 @@ class Users
     end
 
     def register
+        return false unless self.valid?
+
         client = create_db_client
         insert = client.query("INSERT INTO users (username, bio, email) VALUES ('#{@username}','#{@bio}','#{@email}')")
         response = client.query("SELECT * FROM users WHERE LAST_INSERT_ID()")
