@@ -4,13 +4,13 @@ class Users
     attr_accessor :username, :bio, :email
     attr_reader :user_id, :createdAt, :updatedAt
 
-    def initialize(user_id, username, bio, email, createdAt, updatedAt)
-        @user_id = user_id
-        @username = username
-        @bio = bio
-        @email = email
-        @createdAt = createdAt
-        @updatedAt = updatedAt
+    def initialize(params)
+        @user_id = params[:user_id]
+        @username = params[:username]
+        @bio = params[:bio]
+        @email = params[:email]
+        @createdAt = params[:createdAt]
+        @updatedAt = params[:updatedAt]
     end
 
     def register

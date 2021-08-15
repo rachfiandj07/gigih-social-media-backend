@@ -3,7 +3,7 @@ require_relative '../../models/users.rb'
 describe Users do
     before :each do
         @stub_client = double()
-        @users = Users.new(1, '@naufalrdj', 'Hello', 'test@gmail.com', '2021-08-15 00:51:03', '2021-08-15 00:51:03')
+        @users = Users.new(user_id: 1, username: '@naufalrdj', bio: 'Hello', email: 'test@gmail.com', createdAt: '2021-08-15 00:51:03', updatedAt: '2021-08-15 00:51:03')
         @response = {
             "user_id" => 1,
             "username" => "naufalrdj",
@@ -29,7 +29,7 @@ describe Users do
         end
         context 'given invalid params' do
             it 'should not save user data' do
-                users = Users.new(nil, nil, nil, nil, nil, nil)
+                users = Users.new(user_id: nil, username: nil, bio: nil, email: nil, createdAt: nil, updatedAt: nil)
 
                 expect(users.register).to eq(false)
             end
@@ -38,35 +38,31 @@ describe Users do
 
     describe 'initialize' do
         it 'should return not nil' do
-            users = Users.new(1, '@naufalrdj', 'Hello', 'test@gmail.com', '2021-08-15 00:51:03', '2021-08-15 00:51:03')
-
-            expect(users).not_to be_nil
+            expect(@users).not_to be_nil
         end
     end
 
     describe 'valid?' do
 
         context 'given valid params' do
-            it 'should return true' do
-                users = Users.new(1, '@naufalrdj', 'Hello', 'test@gmail.com', '2021-08-15 00:51:03', '2021-08-15 00:51:03')
-    
-                expect(users.valid?).to eq(true)
+            it 'should return true' do    
+                expect(@users.valid?).to eq(true)
             end
         end
 
         context 'given invalid params' do
             it 'should return false when username is nil' do
-                users = Users.new(1, nil, 'Hello', 'test@gmail.com', '2021-08-15 00:51:03', '2021-08-15 00:51:03')
+                users = Users.new(user_id: 1, username: nil, bio: 'Hello', email: 'test@gmail.com', createdAt: '2021-08-15 00:51:03', updatedAt: '2021-08-15 00:51:03')
 
                 expect(users.valid?).to eq(false)
             end
             it 'should return false when bio is nil' do
-                users = Users.new(1, '@naufalrdj', nil, 'test@gmail.com', '2021-08-15 00:51:03', '2021-08-15 00:51:03')
+                users = Users.new(user_id: 1, username: '@naufalrdj', bio: nil, email: 'test@gmail.com', createdAt: '2021-08-15 00:51:03', updatedAt: '2021-08-15 00:51:03')
 
                 expect(users.valid?).to eq(false)
             end
             it 'should return false when email is nil' do
-                users = Users.new(1, '@naufalrdj', 'Hello', nil, '2021-08-15 00:51:03', '2021-08-15 00:51:03')
+                users = Users.new(user_id: 1, username: '@naufalrdj', bio: 'Hello', email: nil, createdAt: '2021-08-15 00:51:03', updatedAt: '2021-08-15 00:51:03')
 
                 expect(users.valid?).to eq(false)
             end
