@@ -5,12 +5,13 @@ class UsersController
 
     def register(params)
         users = Users.new(params)
-        customMessage = CustomSuccessMessage.new
+        customMessage = CustomSuccessMessage.new("Success", 200, "POST")
         users.register
 
         return {
             "message" => customMessage.message,
             "status" => customMessage.status,
+            "method" => customMessage.method,
             "data" => params
         }
     end

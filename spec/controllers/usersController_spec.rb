@@ -15,6 +15,7 @@ describe UsersController do
                 response = {
                     "message" => "Success",
                     "status" => 200,
+                    "method" => "POST",
                     "data" => {
                         "user_id" => 1,
                         "username" => "naufalrdj",
