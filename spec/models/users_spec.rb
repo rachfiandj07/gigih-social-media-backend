@@ -19,9 +19,11 @@ describe Users do
         context 'given valid params' do
             it 'should save user data' do
                 stub_query = "INSERT INTO users (username, bio, email) VALUES ('#{@users.username}','#{@users.bio}','#{@users.email}')"
-                stub_query_response = "SELECT * FROM users WHERE LAST_INSERT_ID()"
+                stub_query_last_insert = "SET @id = LAST_INSERT_ID();"
+                stub_query_response = "SELECT * FROM users WHERE user_id = @id"
 
                 expect(@stub_client).to receive(:query).with(stub_query)
+                expect(@stub_client).to receive(:query).with(stub_query_last_insert)
                 expect(@stub_client).to receive(:query).with(stub_query_response).and_return([@response])
 
                 @users.register

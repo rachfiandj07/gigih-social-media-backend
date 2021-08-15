@@ -18,7 +18,8 @@ class Users
 
         client = create_db_client
         insert = client.query("INSERT INTO users (username, bio, email) VALUES ('#{@username}','#{@bio}','#{@email}')")
-        response = client.query("SELECT * FROM users WHERE LAST_INSERT_ID()")
+        last_insert_id = client.query("SET @id = LAST_INSERT_ID();")
+        response = client.query("SELECT * FROM users WHERE user_id = @id")
 
         data = response
     end
