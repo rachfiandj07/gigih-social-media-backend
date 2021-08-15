@@ -38,5 +38,21 @@ describe UsersController do
                 expect(result).to eq(response)
             end
         end
+        
+        context 'when given invalid params' do
+            it 'should return response status 401' do
+                allow(Users).to receive(:new).and_return(@stub_client)
+                expect(@stub_client).to receive(:register)
+
+                response = {
+                    "message" => "Failed",
+                    "status" => 401,
+                    "data" => []
+                }
+
+                result = @controller.register([])
+                expect(result).to eq(response)
+            end
+        end
     end
 end
