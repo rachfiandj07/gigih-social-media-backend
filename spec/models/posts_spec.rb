@@ -5,7 +5,7 @@ describe Posts do
         @stub_client = double()
         @posts = Posts.new(post_id: 1, 
                            user_id: 1, 
-                           description: 'Hello semangat #gigih #gigih', 
+                           description: 'Hello semangat #gigih #GiGih', 
                            attachment: nil, 
                            parent_id: 1, 
                            createdAt: '2021-08-15 00:51:03',
@@ -14,7 +14,7 @@ describe Posts do
         @response = {
             "post_id" => 1, 
             "user_id" => 1, 
-            "description" => 'Hello semangat #gigih #gigih', 
+            "description" => 'Hello semangat #gigih #GiGih', 
             "attachment" => nil, 
             "parent_id" => 1, 
             "createdAt" => '2021-08-15 00:51:03',
@@ -65,6 +65,14 @@ describe Posts do
 
                 @posts.comment
             end
+        end
+    end
+
+    context 'check hashtag' do
+        it 'should return list of hashtags' do
+            hashtag_list = ['gigih', 'GiGih']
+
+            expect(@posts.check_hashtag).to eq(hashtag_list)
         end
     end
 end
