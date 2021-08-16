@@ -10,3 +10,5 @@ gem "rspec", "~> 3.10.0"
 gem "simplecov", "~> 0.21.2"
 
 gem "json", "~> 2.5.1"
+
+gem 'rubocop', '~> 1.19', require: false
