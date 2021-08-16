@@ -70,7 +70,7 @@ describe Posts do
 
     context 'check hashtag' do
         it 'should return list of hashtags' do
-            hashtag_list = ['gigih', 'GiGih']
+            hashtag_list = ['gigih', 'gigih']
 
             expect(@posts.check_hashtag).to eq(hashtag_list)
         end

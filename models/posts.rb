@@ -18,4 +18,8 @@ class Posts
     def post
         
     end
+
+    def check_hashtag
+        @description.downcase.scan(/#(\w+)/).flatten
+    end
 end
