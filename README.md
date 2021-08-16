@@ -1,4 +1,5 @@
 # gojek-social-media-backend
+
 Gojek Social Media Backend Project
 
 ### Introduction
@@ -12,9 +13,14 @@ Developing a social media application which can be used to share information wit
 3. Create `.env` file based on `.env.example`
 4. `source .env` file
 
+### Running Linter
+
+`robocop -a` or `robocop --auto-correct-all`
+
 ### Commit Guidelines
 
 There are 4 commit type :
+
 1. `[TEST]` : This shows test commit
 2. `[FEATURE]` : This shows feature is developed first rather than test first
 3. `[DEPENDENCIES]` : This shows adding dependencies such as Collection , Schema or etc..
