@@ -29,7 +29,11 @@ describe Posts do
                 stub_query = "INSERT INTO posts (user_id, description, attachment, parent_id) 
                               VALUES 
                               (#{@posts.user_id},'#{@posts.description}','#{@posts.attachment}',#{@posts.parent_id})"
+                stub_query_last_insert = "SET @id = LAST_INSERT_ID();"
+                stub_query_response = "SELECT * FROM posts WHERE post_id = @id"
                 expect(@stub_client).to receive(:query).with(stub_query)
+                expect(@stub_client).to receive(:query).with(stub_query_last_insert)
+                expect(@stub_client).to receive(:query).with(stub_query_response)
 
                 mock_hashtag = double()
                 allow(Hashtag).to receive(:new).and_return(mock_hashtag)
