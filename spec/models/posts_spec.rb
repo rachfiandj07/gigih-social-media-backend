@@ -38,6 +38,7 @@ describe Posts do
                 mock_hashtag = double()
                 allow(Hashtag).to receive(:new).and_return(mock_hashtag)
                 allow(mock_hashtag).to receive(:post)
+                allow(mock_hashtag).to receive(:post_hashtag)
 
                 expect(stub_query).to eq(@response)
 
