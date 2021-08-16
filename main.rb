@@ -10,9 +10,11 @@ before do
   content_type :json
 end
 
-post "#{settings.prefix}/user/register" do
-  controller = UsersController.new
-  response = controller.register(params)
-
-  return response.to_json
+namespace "#{settings.prefix}/user" do
+    post "/register" do
+        controller = UsersController.new
+        response = controller.register(params)
+      
+        return response.to_json
+    end
 end
