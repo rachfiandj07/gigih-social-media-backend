@@ -4,7 +4,7 @@
 -- https://tableplus.com/
 --
 -- Database: twitter_backend_project
--- Generation Time: 2021-08-13 12:47:32.3580
+-- Generation Time: 2021-08-17 02:04:53.9920
 -- -------------------------------------------------------------
 
 
@@ -17,17 +17,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
-CREATE TABLE `comment_hashtags` (
-  `hashtag_id` int DEFAULT NULL,
-  `comment_id` int DEFAULT NULL,
-  `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  KEY `hashtag_id` (`hashtag_id`),
-  KEY `comment_id` (`comment_id`),
-  CONSTRAINT `comment_hashtags_ibfk_1` FOREIGN KEY (`hashtag_id`) REFERENCES `hashtags` (`hashtag_id`),
-  CONSTRAINT `comment_hashtags_ibfk_2` FOREIGN KEY (`comment_id`) REFERENCES `user_comments` (`comment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `hashtags` (
   `hashtag_id` int NOT NULL AUTO_INCREMENT,
@@ -48,21 +37,6 @@ CREATE TABLE `post_hashtags` (
   CONSTRAINT `post_hashtags_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `user_posts` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `user_comments` (
-  `comment_id` int NOT NULL AUTO_INCREMENT,
-  `post_id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `comment_description` text,
-  `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `attachment` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`comment_id`),
-  KEY `user_id` (`user_id`),
-  KEY `post_id` (`post_id`),
-  CONSTRAINT `user_comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  CONSTRAINT `user_comments_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `user_posts` (`post_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `user_posts` (
   `post_id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
@@ -70,6 +44,7 @@ CREATE TABLE `user_posts` (
   `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `attachment` varchar(255) DEFAULT NULL,
+  `parent_id` int DEFAULT NULL,
   PRIMARY KEY (`post_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `user_posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
@@ -81,9 +56,9 @@ CREATE TABLE `users` (
   `bio` text,
   `email` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updatedAt` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 
