@@ -50,15 +50,16 @@ describe Posts do
             it 'should create comment' do
                 stub_query = "INSERT INTO posts (user_id, description, attachment, parent_id) VALUES (#{@posts.user_id},'#{@posts.description}','#{@posts.attachment}',#{@posts.parent_id})"
                 stub_query_response = "SELECT * FROM posts WHERE parent_id = #{@posts.parent_id}"
+
+                allow(@stub_client).to receive(:last_id).and_return(1)
                 expect(@stub_client).to receive(:query).with(stub_query)
-                expect(@stub_client).to receive(:query).with(stub_query_response)
+                expect(@stub_client).to receive(:query).with(stub_query_response).and_return([@response])
 
                 mock_hashtag = double()
                 allow(Hashtags).to receive(:new).and_return(mock_hashtag)
                 allow(mock_hashtag).to receive(:post)
-
-                expect(stub_query).to eq(@response)
-
+                allow(mock_hashtag).to receive(:post_hashtag)
+                
                 @posts.comment
             end
         end

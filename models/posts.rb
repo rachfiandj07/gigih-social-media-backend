@@ -15,6 +15,21 @@ class Posts
         @updatedAt = params[:updatedAt]
     end
 
+    def comment
+        client = create_db_client
+        insert = client.query("INSERT INTO posts (user_id, description, attachment, parent_id) VALUES (#{@user_id},'#{@description}','#{@attachment}',#{@parent_id})")
+        response = client.query("SELECT * FROM posts WHERE parent_id = #{@parent_id}")
+        
+        hashtags = self.check_hashtag
+        hashtags.each do |data|
+            hashtag = Hashtags.new(name: data)
+            hashtag.post
+            hashtag.post_hashtag(client.last_id)
+        end
+
+        data = response
+    end
+
     def post
         client = create_db_client
         insert = client.query("INSERT INTO posts (user_id, description, attachment, parent_id) VALUES (#{@user_id},'#{@description}','#{@attachment}',#{@parent_id})")
