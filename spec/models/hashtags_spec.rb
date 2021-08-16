@@ -21,9 +21,7 @@ describe Hashtags do
                 stub_query_response = "SELECT * FROM hashtags WHERE hashtag_id = @id"
                 expect(@stub_client).to receive(:query).with(stub_query)
                 expect(@stub_client).to receive(:query).with(stub_query_last_insert)
-                expect(@stub_client).to receive(:query).with(stub_query_response)
-
-                expect(stub_query).to eq(@response)
+                expect(@stub_client).to receive(:query).with(stub_query_response).and_return([@response])
 
                 @hashtags.post
             end
