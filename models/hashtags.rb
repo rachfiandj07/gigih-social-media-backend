@@ -9,6 +9,15 @@ class Hashtags
         @createdAt = params[:createdAt],
         @updatedAt = params[:updatedAt]
     end
+
+    def post
+        client = create_db_client
+        insert = client.query("INSERT INTO hashtags (name) VALUES ('#{@name}')")
+        last_insert_id = client.query("SET @id = LAST_INSERT_ID();")
+        response = client.query("SELECT * FROM hashtags WHERE hashtag_id = @id")
+        
+        data = response
+    end
     
     def post_hashtag(post_id)
         client = create_db_client
