@@ -14,3 +14,5 @@ gem 'simplecov', '~> 0.21.2'
 gem 'json', '~> 2.5.1'
 
 gem 'rubocop', '~> 1.19', require: false
+
+gem 'sinatra-namespace', '~> 1.0'

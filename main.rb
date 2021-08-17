@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra'
+require "sinatra/namespace"
 require 'json'
 
 # controller import
@@ -13,8 +14,8 @@ before do
 end
 
 namespace "#{settings.prefix}/user" do
+  controller = UsersController.new
   post '/register' do
-    controller = UsersController.new
     response = controller.register(params)
 
     return response.to_json
