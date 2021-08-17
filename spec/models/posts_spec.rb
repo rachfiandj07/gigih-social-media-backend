@@ -4,7 +4,7 @@ require_relative '../../models/posts'
 
 describe Posts do
   before :each do
-    @stub_client = double
+    @stub_client = double()
     @posts = Posts.new(post_id: 1,
                        user_id: 1,
                        description: 'Hello semangat #gigih #GiGih',
@@ -36,7 +36,7 @@ describe Posts do
         expect(@stub_client).to receive(:query).with(stub_query_last_insert)
         expect(@stub_client).to receive(:query).with(stub_query_response).and_return([@response])
 
-        mock_hashtag = double
+        mock_hashtag = double()
         allow(Hashtags).to receive(:new).and_return(mock_hashtag)
         allow(mock_hashtag).to receive(:post)
         allow(mock_hashtag).to receive(:post_hashtag)
@@ -56,7 +56,7 @@ describe Posts do
         expect(@stub_client).to receive(:query).with(stub_query)
         expect(@stub_client).to receive(:query).with(stub_query_response).and_return([@response])
 
-        mock_hashtag = double
+        mock_hashtag = double()
         allow(Hashtags).to receive(:new).and_return(mock_hashtag)
         allow(mock_hashtag).to receive(:post)
         allow(mock_hashtag).to receive(:post_hashtag)

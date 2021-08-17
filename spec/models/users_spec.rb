@@ -4,7 +4,7 @@ require_relative '../../models/users'
 
 describe Users do
   before :each do
-    @stub_client = double
+    @stub_client = double()
     @users = Users.new(user_id: 1, username: '@naufalrdj', bio: 'Hello', email: 'test@gmail.com',
                        createdAt: '2021-08-15 00:51:03', updatedAt: '2021-08-15 00:51:03')
     @response = {

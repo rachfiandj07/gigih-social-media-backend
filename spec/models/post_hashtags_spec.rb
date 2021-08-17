@@ -4,7 +4,7 @@ require_relative '../../models/post_hashtags'
 
 describe PostHashtags do
   before :each do
-    @stub_client = double
+    @stub_client = double()
     @post_hashtags = PostHashtags.new(name: 'JAKARTA')
     @response = {
       'post_id' => 1,

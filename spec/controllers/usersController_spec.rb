@@ -4,7 +4,7 @@ require_relative '../../controllers/usersController'
 
 describe UsersController do
   before :each do
-    @stub_client = double
+    @stub_client = double()
     @controller = UsersController.new
   end
 
