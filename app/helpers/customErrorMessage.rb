@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CustomErrorMessage < StandardError
   attr_accessor :message, :status
 

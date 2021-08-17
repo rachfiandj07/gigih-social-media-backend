@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CustomSuccessMessage
   attr_accessor :message, :status, :method
 

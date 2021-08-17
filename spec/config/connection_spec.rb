@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../config/connection'
 
 describe create_db_client do

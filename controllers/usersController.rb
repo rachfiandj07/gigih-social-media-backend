@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../models/users'
 require_relative '../app/helpers/customSuccessMessage'
 
