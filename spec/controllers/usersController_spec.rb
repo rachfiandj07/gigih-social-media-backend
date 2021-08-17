@@ -12,7 +12,7 @@ describe UsersController do
     context 'given valid params' do
       it 'should return response status 200' do
         allow(Users).to receive(:new).and_return(@stub_client)
-        expect(@stub_client).to receive(:register)
+        expect(@stub_client).to receive(:register).and_return(200)
 
         response = {
           'message' => 'Success',
@@ -50,6 +50,7 @@ describe UsersController do
         response = {
           'message' => 'Failed',
           'status' => 401,
+          'method' => 'POST',
           'data' => []
         }
 
