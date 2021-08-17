@@ -18,7 +18,7 @@ describe PostHashtags do
   end
 
   describe 'get post contain hashtag' do
-    it 'should return response by hashtag name' do
+    it 'should return response by hashtag name post' do
       stub_query = "SELECT user_posts.post_id, users.username, user_posts.description, user_posts.attachment, user_posts.parent_id ,user_posts.createdAt, user_posts.updatedAt, hashtags.`name`
             FROM user_posts
             LEFT JOIN post_hashtags ON user_posts.post_id = post_hashtags.post_id
