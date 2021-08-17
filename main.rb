@@ -17,7 +17,7 @@ namespace "#{settings.prefix}/user" do
   controller = UsersController.new
   post '/register' do
     response = controller.register(params)
-
+    status response['status']
     return response.to_json
   end
 end
