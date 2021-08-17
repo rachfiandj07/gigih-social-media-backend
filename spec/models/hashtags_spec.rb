@@ -4,7 +4,7 @@ require_relative '../../models/hashtags'
 
 describe Hashtags do
   before :each do
-    @stub_client = double
+    @stub_client = double()
     @hashtags = Hashtags.new(hashtag_id: 1, name: '#gigih', createdAt: '2021-08-15 00:51:03',
                              updatedAt: '2021-08-15 00:51:03')
     @response = {
