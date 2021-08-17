@@ -12,7 +12,15 @@ class Hashtags
     @updatedAt = params[:updatedAt]
   end
 
+  def valid?
+      return false if @name.nil?
+
+      true
+  end
+
   def post
+    return false unless valid?
+
     client = create_db_client
     insert = client.query("INSERT INTO hashtags (name) VALUES ('#{@name}')")
     last_insert_id = client.query('SET @id = LAST_INSERT_ID();')
