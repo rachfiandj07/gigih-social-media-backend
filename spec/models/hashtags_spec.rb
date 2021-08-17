@@ -16,6 +16,14 @@ describe Hashtags do
     allow(Mysql2::Client).to receive(:new).and_return(@stub_client)
   end
 
+  context 'valid' do
+      context 'given valid params' do
+          it 'should return true' do
+              expect(@hashtags.valid?).to eq(true)
+          end
+      end
+  end
+
   context 'post' do
     describe 'given valid params' do
       it 'should create hashtag' do

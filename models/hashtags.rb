@@ -8,8 +8,8 @@ class Hashtags
   def initialize(params)
     @hashtag_id = params[:hashtag_id]
     @name = params[:name],
-            @createdAt = params[:createdAt],
-            @updatedAt = params[:updatedAt]
+    @createdAt = params[:createdAt],
+    @updatedAt = params[:updatedAt]
   end
 
   def post
