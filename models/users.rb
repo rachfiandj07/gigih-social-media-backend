@@ -24,11 +24,16 @@ class Users
     response = client.query('SELECT * FROM users WHERE user_id = @id')
 
     data = response
+
+    return 200 unless data != nil
+
+    return 401
   end
 
   def valid?
-    return false if @username.nil? || @bio.nil? || @email.nil?
-
+    return false if @username.nil? ||
+                    @bio.nil? ||
+                    !(@email.match(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i))
     true
   end
 end

@@ -34,8 +34,8 @@ describe Users do
     end
     context 'given invalid params' do
       it 'should not save user data' do
-        users = Users.new(user_id: nil, username: nil, bio: nil, email: nil, createdAt: nil, updatedAt: nil)
-
+        users = Users.new(user_id: nil, username: nil, bio: nil, email: 'foo#mail.com', createdAt: nil, updatedAt: nil)
+        
         expect(users.register).to eq(false)
       end
     end
@@ -67,8 +67,8 @@ describe Users do
 
         expect(users.valid?).to eq(false)
       end
-      it 'should return false when email is nil' do
-        users = Users.new(user_id: 1, username: '@naufalrdj', bio: 'Hello', email: nil,
+      it 'should return false when email is not equal /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i' do
+        users = Users.new(user_id: 1, username: '@naufalrdj', bio: 'Hello', email: 'foo#mail.com',
                           createdAt: '2021-08-15 00:51:03', updatedAt: '2021-08-15 00:51:03')
 
         expect(users.valid?).to eq(false)
