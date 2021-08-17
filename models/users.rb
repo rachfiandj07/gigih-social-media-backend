@@ -21,13 +21,14 @@ class Users
 
     data = response
 
-    return 200 unless !valid?
+    return 200 if valid?
   end
-  
+
   def valid?
     return false if @username.nil? ||
                     @bio.nil? ||
                     !@email.match(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
+
     true
   end
 end

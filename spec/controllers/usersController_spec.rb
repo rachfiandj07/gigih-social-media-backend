@@ -49,12 +49,17 @@ describe UsersController do
 
         response = {
           'message' => 'Failed',
-          'status' => 401,
-          'method' => 'POST',
-          'data' => []
+          'status' => 400,
+          'method' => 'POST'
         }
 
-        result = @controller.register([])
+        params = {
+          'username' => nil,
+          'bio' => nil,
+          'email' => 'foo#mail.com'
+        }
+
+        result = @controller.register(params)
         expect(result).to eq(response)
       end
     end

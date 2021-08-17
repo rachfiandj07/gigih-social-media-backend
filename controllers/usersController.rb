@@ -7,19 +7,18 @@ class UsersController
     users = Users.new(params)
 
     if users.register == 200
-        return {
-            'message' => 'Success',
-            'status' => 200,
-            'method' => 'POST',
-            'data' => params
-        }
+      {
+        'message' => 'Success',
+        'status' => 200,
+        'method' => 'POST',
+        'data' => params
+      }
     else
-        return {
-            'message' => 'Failed',
-            'status' => 401,
-            'method' => 'POST',
-            'data' => params
-        }
+      {
+        'message' => 'Failed',
+        'status' => 400,
+        'method' => 'POST'
+      }
     end
   end
 end
