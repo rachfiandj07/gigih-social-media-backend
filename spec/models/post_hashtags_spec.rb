@@ -24,9 +24,9 @@ describe PostHashtags do
             LEFT JOIN post_hashtags ON user_posts.post_id = post_hashtags.post_id
             LEFT JOIN hashtags ON hashtags.hashtag_id = post_hashtags.hashtag_id
             LEFT JOIN users ON users.user_id = user_posts.user_id
-            WHERE hashtags.`name` LIKE %#{@post_hashtags.name}%"
+            WHERE hashtags.`name` LIKE '%#{@post_hashtags.name}%'"
 
-      expect(@stub_client).to receive(:query).and_return([@response])
+      expect(@stub_client).to receive(:query).with(stub_query).and_return([@response])
 
       @post_hashtags.get_post_contain_hashtag
     end
