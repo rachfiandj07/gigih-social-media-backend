@@ -15,7 +15,7 @@ Developing a social media application which can be used to share information wit
 
 ### Running Linter
 
-`robocop -a` or `robocop --auto-correct-all`
+`rubocop -a` or `rubocop --auto-correct-all`
 
 ### Commit Guidelines
 
