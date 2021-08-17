@@ -4,15 +4,11 @@ require_relative '../config/connection'
 
 class Users
   attr_accessor :username, :bio, :email
-  attr_reader :user_id, :createdAt, :updatedAt
 
   def initialize(params)
-    @user_id = params[:user_id]
     @username = params[:username]
     @bio = params[:bio]
     @email = params[:email]
-    @createdAt = params[:createdAt]
-    @updatedAt = params[:updatedAt]
   end
 
   def register
@@ -25,15 +21,13 @@ class Users
 
     data = response
 
-    return 200 unless data != nil
-
-    return 401
+    return 200 unless !valid?
   end
-
+  
   def valid?
     return false if @username.nil? ||
                     @bio.nil? ||
-                    !(@email.match(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i))
+                    !@email.match(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
     true
   end
 end
