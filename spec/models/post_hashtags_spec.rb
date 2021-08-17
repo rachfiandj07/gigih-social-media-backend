@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../models/post_hashtags'
 
 describe PostHashtags do
@@ -40,19 +42,29 @@ describe PostHashtags do
         'name' => 'gigih'
       }
 
-      stub_query = "SELECT hashtags.hashtag_id, COUNT(hashtags.hashtag_id) as count, hashtags.`name`
-          FROM user_posts
-          LEFT JOIN post_hashtags ON user_posts.post_id = post_hashtags.post_id
-          LEFT JOIN hashtags ON hashtags.hashtag_id = post_hashtags.hashtag_id
-          LEFT JOIN users ON users.user_id = user_posts.user_id
-          WHERE user_posts.createdAt > DATE_SUB(NOW(), INTERVAL 24 HOUR)
-          GROUP BY hashtags.hashtag_id
-          ORDER BY count DESC
-          LIMIT 5"
+      query = 
+            "
+            SELECT
+                hashtags.hashtag_id,
+                COUNT(hashtags.hashtag_id) AS count,
+                hashtags. `name`
+            FROM
+                user_posts
+                LEFT JOIN post_hashtags ON user_posts.post_id = post_hashtags.post_id
+                LEFT JOIN hashtags ON hashtags.hashtag_id = post_hashtags.hashtag_id
+                LEFT JOIN users ON users.user_id = user_posts.user_id
+            WHERE
+                user_posts.createdAt > DATE_SUB(NOW(), INTERVAL 24 HOUR)
+            GROUP BY
+                hashtags.hashtag_id
+            ORDER BY
+                count DESC
+            LIMIT 5
+            "
 
-      expect(@stub_client).to receive(:query).with(stub_query).and_return([response])
+      expect(@stub_client).to receive(:query).with(query).and_return([response])
 
-      @post_hashtag.get_list_trending_hashtag
+      post_hashtag = PostHashtags.get_list_trending_hashtag
     end
   end
 end
