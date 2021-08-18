@@ -30,4 +30,10 @@ namespace "#{settings.prefix}/hashtags" do
       status response['status']
       return response.to_json
     end
+
+    get '/trending' do
+      response = controller.get_list_trending
+      status response['status']
+      return response.to_json
+    end
 end
