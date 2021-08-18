@@ -24,6 +24,13 @@ class Users
     return 200 if valid?
   end
 
+  def get_new_user
+    client = create_db_client
+    get_new_user = client.query('SELECT * FROM users ORDER BY user_id DESC LIMIT 0, 1')
+
+    data = get_new_user
+  end
+
   def valid?
     return false if @username.nil? ||
                     @bio.nil? ||

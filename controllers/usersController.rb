@@ -4,14 +4,17 @@ require_relative '../models/users'
 
 class UsersController
   def register(params)
+    array = Array.new
     users = Users.new(params)
-
+    users.get_new_user.each do |res|
+      array.push(res)
+    end
     if users.register == 200
       {
         'message' => 'Success',
         'status' => 200,
         'method' => 'POST',
-        'data' => params
+        'data' => array
       }
     else
       {
