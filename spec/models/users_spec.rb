@@ -18,6 +18,16 @@ describe Users do
     allow(Mysql2::Client).to receive(:new).and_return(@stub_client)
   end
 
+  describe 'get new user' do
+    it 'should return a new data user' do
+      stub_query = "SELECT * FROM users ORDER BY user_id DESC LIMIT 0, 1"
+
+      expect(@stub_client).to receive(:query).with(stub_query).and_return([@response])
+
+      @users.get_new_user
+    end
+  end
+
   describe 'register' do
     context 'given valid params' do
       it 'should save user data' do
