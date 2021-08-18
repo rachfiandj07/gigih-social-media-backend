@@ -8,12 +8,21 @@ class PostHashtagsController
         post_hashtag.get_post_contain_hashtag.each do |res|
             array.push(res)
         end
-        return {
-            'message' => 'Success',
-            'status' => 200,
-            'method' => 'POST',
-            'data' => array
-        }
+        if array.empty?
+            return {
+                'message' => 'Success',
+                'status' => 404,
+                'method' => 'POST',
+                'data' => 'Hashtag is not available'
+            }
+        else
+            return {
+                'message' => 'Success',
+                'status' => 200,
+                'method' => 'POST',
+                'data' => array
+            }
+        end
     end
 
     def get_list_trending
