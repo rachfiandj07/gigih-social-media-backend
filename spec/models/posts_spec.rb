@@ -24,6 +24,16 @@ describe Posts do
     allow(Mysql2::Client).to receive(:new).and_return(@stub_client)
   end
 
+  context 'get new insert' do
+    it 'should return new insert' do
+      stub_query = 'SELECT * FROM user_posts ORDER BY post_id DESC LIMIT 0, 1'
+
+      expect(@stub_client).to receive(:query).with(stub_query).and_return([@response])
+
+      @posts.get_new_insert
+    end
+  end
+
   context 'post' do
     describe 'given valid params' do
       it 'should create post' do
