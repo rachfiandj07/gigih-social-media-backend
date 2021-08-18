@@ -17,10 +17,18 @@ class Posts
     @updatedAt = params[:updatedAt]
   end
 
+  def valid?
+    return false if @user_id.nil?
+    return false if @description.nil? || @description.length > 1000
+
+    true
+  end
+
   def comment
+    return false unless valid?
+
     client = create_db_client
     insert = client.query("INSERT INTO posts (user_id, description, attachment, parent_id) VALUES (#{@user_id},'#{@description}','#{@attachment}',#{@parent_id})")
-    response = client.query("SELECT * FROM posts WHERE parent_id = #{@parent_id}")
 
     hashtags = check_hashtag
     hashtags.each do |data|
@@ -29,14 +37,14 @@ class Posts
       hashtag.post_hashtag(client.last_id)
     end
 
-    data = response
+    return 200 if valid?
   end
 
   def post
+    return false unless valid?
+
     client = create_db_client
     insert = client.query("INSERT INTO posts (user_id, description, attachment, parent_id) VALUES (#{@user_id},'#{@description}','#{@attachment}',#{@parent_id})")
-    last_insert_id = client.query('SET @id = LAST_INSERT_ID();')
-    response = client.query('SELECT * FROM posts WHERE post_id = @id')
 
     hashtags = check_hashtag
     hashtags.each do |data|
@@ -45,7 +53,7 @@ class Posts
       hashtag.post_hashtag(client.last_id)
     end
 
-    data = response
+    return 200 if valid?
   end
 
   def check_hashtag
