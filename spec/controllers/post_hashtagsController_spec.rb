@@ -43,7 +43,7 @@ describe PostHashtagsController do
       
             response = {
                 'message' => 'Success',
-                'status' => 404,
+                'status' => 200,
                 'method' => 'POST',
                 'data' => 'Hashtag is not available'
             }
