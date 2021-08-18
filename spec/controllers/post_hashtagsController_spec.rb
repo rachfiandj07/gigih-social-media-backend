@@ -43,11 +43,7 @@ describe PostHashtagsController do
           'message' => 'Success',
           'status' => 200,
           'method' => 'POST',
-          'data' => [{
-            'hashtag_id' => 1,
-            'count' => 10,
-            'description' => 'gigih'
-          }]
+          'data' => []
         }
 
         allow(@stub_client).to receive(:get_list_trending_hashtag).and_return(response['data'])
