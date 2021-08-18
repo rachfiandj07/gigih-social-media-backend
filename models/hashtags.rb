@@ -18,6 +18,13 @@ class Hashtags
       true
   end
 
+  def get_hashtag_id
+    client = create_db_client
+    get_hashtag_id = client.query("SELECT hashtag_id FROM hashtags WHERE hashtags.`name` LIKE '%#{@name}%'")
+
+    data = get_hashtag_id
+  end
+
   def post
     return false unless valid?
 
