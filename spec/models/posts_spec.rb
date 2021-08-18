@@ -40,6 +40,19 @@ describe Posts do
         @posts.post
       end
     end
+    describe 'given invalid params' do
+      it 'should return false' do
+        posts = Posts.new(post_id: 1,
+                           user_id: nil,
+                           description: 'Hello semangat #gigih #GiGih',
+                           attachment: nil,
+                           parent_id: 1,
+                           createdAt: '2021-08-15 00:51:03',
+                           updatedAt: '2021-08-15 00:51:03')
+
+        expect(posts.post).to eq(false)
+      end
+    end
   end
 
   context 'comment' do
@@ -56,6 +69,11 @@ describe Posts do
         allow(mock_hashtag).to receive(:post_hashtag)
 
         @posts.comment
+      end
+    end
+    describe 'given invalid params' do
+      it 'should return false' do
+        
       end
     end
   end
