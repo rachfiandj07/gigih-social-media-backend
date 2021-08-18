@@ -93,4 +93,27 @@ describe Posts do
       expect(@posts.check_hashtag).to eq(hashtag_list)
     end
   end
+
+  context 'given invalid params' do
+    it 'should return false when user_id is nil' do
+        posts = Posts.new(post_id: 1,
+                          user_id: nil,
+                          description: 'Hello semangat #gigih #GiGih',
+                          attachment: nil,
+                          parent_id: 1,
+                          createdAt: '2021-08-15 00:51:03',
+                          updatedAt: '2021-08-15 00:51:03')
+        expect(posts.valid?).to eq(false)
+    end
+    it 'should return false when description is nil' do
+      posts = Posts.new(post_id: 1,
+                        user_id: 1,
+                        description: nil,
+                        attachment: nil,
+                        parent_id: 1,
+                        createdAt: '2021-08-15 00:51:03',
+                        updatedAt: '2021-08-15 00:51:03')
+      expect(posts.valid?).to eq(false)
+    end
+  end
 end
