@@ -19,14 +19,11 @@ class PostHashtagsController
     def get_list_trending
         array = Array.new
         post_hashtag = PostHashtags.get_list_trending_hashtag
-        post_hashtag.each do |res|
-            array.push(res)
-        end
         return {
             'message' => 'Success',
             'status' => 200,
             'method' => 'POST',
-            'data' => array
+            'data' => post_hashtag.each
         }
     end
 end
