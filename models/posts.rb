@@ -24,6 +24,13 @@ class Posts
     true
   end
 
+  def get_new_insert
+    client = create_db_client
+    get_new_insert = client.query('SELECT * FROM user_posts ORDER BY post_id DESC LIMIT 0, 1')
+
+    data = get_new_insert
+  end
+
   def comment
     return false unless valid?
 
