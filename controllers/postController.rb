@@ -4,7 +4,7 @@ class PostController
     def create_post(params)
         array = Array.new
         posts = Posts.new(params)
-        posts.get_new_insert do |res|
+        posts.get_new_insert.each do |res|
             array.push(res)
         end
         if posts.post == 201
