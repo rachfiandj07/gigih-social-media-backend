@@ -63,15 +63,11 @@ describe PostHashtagsController do
           'message' => 'Success',
           'status' => 200,
           'method' => 'POST',
-          'data' => [{
-            "count"=>0, 
-            "hashtag_id"=>nil, 
-            "name"=>nil
-            }]
+          'data' => nil
         }
 
-        allow(@stub_client).to receive(:get_list_trending_hashtag).and_return(response['data'])
-        allow(PostHashtags).to receive(:new).and_return(@stub_client)
+        allow(@stub_client).to receive(:each)
+        allow(PostHashtags).to receive(:get_list_trending_hashtag).and_return(@stub_client)
 
         result = @controller.get_list_trending
         expect(result).to eq(response)
