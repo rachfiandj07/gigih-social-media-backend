@@ -4,7 +4,7 @@ require_relative '../../models/posts'
 
 describe Posts do
   before :each do
-    @stub_client = double()
+    @stub_client = double
     @posts = Posts.new(post_id: 1,
                        user_id: 1,
                        description: 'Hello semangat #gigih #GiGih',
@@ -42,7 +42,7 @@ describe Posts do
         allow(@stub_client).to receive(:last_id).and_return(1)
         expect(@stub_client).to receive(:query).with(stub_query).and_return(200)
 
-        mock_hashtag = double()
+        mock_hashtag = double
         allow(Hashtags).to receive(:new).and_return(mock_hashtag)
         allow(mock_hashtag).to receive(:post)
         allow(mock_hashtag).to receive(:post_hashtag)
@@ -53,12 +53,12 @@ describe Posts do
     describe 'given invalid params' do
       it 'should return false' do
         posts = Posts.new(post_id: 1,
-                           user_id: nil,
-                           description: 'Hello semangat #gigih #GiGih',
-                           attachment: nil,
-                           parent_id: 1,
-                           createdAt: '2021-08-15 00:51:03',
-                           updatedAt: '2021-08-15 00:51:03')
+                          user_id: nil,
+                          description: 'Hello semangat #gigih #GiGih',
+                          attachment: nil,
+                          parent_id: 1,
+                          createdAt: '2021-08-15 00:51:03',
+                          updatedAt: '2021-08-15 00:51:03')
 
         expect(posts.post).to eq(false)
       end
@@ -73,7 +73,7 @@ describe Posts do
         allow(@stub_client).to receive(:last_id).and_return(1)
         expect(@stub_client).to receive(:query).with(stub_query).and_return(200)
 
-        mock_hashtag = double()
+        mock_hashtag = double
         allow(Hashtags).to receive(:new).and_return(mock_hashtag)
         allow(mock_hashtag).to receive(:post)
         allow(mock_hashtag).to receive(:post_hashtag)
@@ -83,29 +83,6 @@ describe Posts do
     end
     describe 'given invalid params' do
       it 'should return false' do
-          posts = Posts.new(post_id: 1,
-                            user_id: nil,
-                            description: 'Hello semangat #gigih #GiGih',
-                            attachment: nil,
-                            parent_id: 1,
-                            createdAt: '2021-08-15 00:51:03',
-                            updatedAt: '2021-08-15 00:51:03')
-
-          expect(posts.post).to eq(false)
-      end
-    end
-  end
-
-  context 'check hashtag' do
-    it 'should return list of hashtags' do
-      hashtag_list = %w[gigih gigih]
-
-      expect(@posts.check_hashtag).to eq(hashtag_list)
-    end
-  end
-
-  context 'given invalid params' do
-    it 'should return false when user_id is nil' do
         posts = Posts.new(post_id: 1,
                           user_id: nil,
                           description: 'Hello semangat #gigih #GiGih',
@@ -113,7 +90,30 @@ describe Posts do
                           parent_id: 1,
                           createdAt: '2021-08-15 00:51:03',
                           updatedAt: '2021-08-15 00:51:03')
-        expect(posts.valid?).to eq(false)
+
+        expect(posts.post).to eq(false)
+      end
+    end
+  end
+
+  context 'check hashtag' do
+    it 'should return list of hashtags' do
+      hashtag_list = %w[gigih]
+
+      expect(@posts.check_hashtag).to eq(hashtag_list)
+    end
+  end
+
+  context 'given invalid params' do
+    it 'should return false when user_id is nil' do
+      posts = Posts.new(post_id: 1,
+                        user_id: nil,
+                        description: 'Hello semangat #gigih #GiGih',
+                        attachment: nil,
+                        parent_id: 1,
+                        createdAt: '2021-08-15 00:51:03',
+                        updatedAt: '2021-08-15 00:51:03')
+      expect(posts.valid?).to eq(false)
     end
     it 'should return false when description is nil' do
       posts = Posts.new(post_id: 1,
