@@ -4,8 +4,7 @@ require_relative '../config/connection'
 require_relative '../models/hashtags'
 
 class Posts
-  attr_accessor :user_id, :description, :attachment, :parent_id
-  attr_reader :post_id, :createdAt, :updatedAt
+  attr_reader :user_id, :description, :attachment, :parent_id
 
   def initialize(params)
     @post_id = params[:post_id]

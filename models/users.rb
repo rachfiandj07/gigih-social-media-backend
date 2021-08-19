@@ -3,7 +3,7 @@
 require_relative '../config/connection'
 
 class Users
-  attr_accessor :username, :bio, :email
+  attr_reader :username, :bio, :email
 
   def initialize(params)
     @username = params[:username]
