@@ -40,7 +40,7 @@ describe Posts do
         stub_query = "INSERT INTO posts (user_id, description, attachment, parent_id) VALUES (#{@posts.user_id},'#{@posts.description}','#{@posts.attachment}',#{@posts.parent_id})"
 
         allow(@stub_client).to receive(:last_id).and_return(1)
-        expect(@stub_client).to receive(:query).with(stub_query).and_return(200)
+        expect(@stub_client).to receive(:query).with(stub_query).and_return(201)
 
         mock_hashtag = double
         allow(Hashtags).to receive(:new).and_return(mock_hashtag)

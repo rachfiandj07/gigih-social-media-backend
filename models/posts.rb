@@ -44,7 +44,7 @@ class Posts
       hashtag.post_hashtag(client.last_id)
     end
 
-    return 200 if valid?
+    return 201 if valid?
   end
 
   def post
