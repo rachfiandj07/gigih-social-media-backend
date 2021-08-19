@@ -9,7 +9,7 @@ describe Hashtags do
                              updatedAt: '2021-08-15 00:51:03')
     @response = {
       'hashtag_id' => 1,
-      'name' => 1,
+      'name' => 'gigih',
       'createdAt' => '2021-08-15 00:51:03',
       'updatedAt' => '2021-08-15 00:51:03'
     }
@@ -36,7 +36,7 @@ describe Hashtags do
   context 'post' do
     describe 'given valid params' do
       it 'should create hashtag' do
-        stub_query = "INSERT INTO hashtags (name) VALUES ('#{@hashtags.name}')"
+        stub_query = "INSERT INTO hashtags (name) VALUES ('#{@hashtags.name[0]}')"
         stub_query_last_insert = 'SET @id = LAST_INSERT_ID();'
         stub_query_response = 'SELECT hashtag_id FROM hashtags WHERE hashtag_id = @id'
         expect(@stub_client).to receive(:query).with(stub_query)
@@ -51,7 +51,7 @@ describe Hashtags do
   context 'post hashtag' do
     describe 'given valid params' do
       it 'should create post hastag' do
-        stub_query_post = "INSERT INTO hashtags (name) VALUES ('#{@hashtags.name}')"
+        stub_query_post = "INSERT INTO hashtags (name) VALUES ('#{@hashtags.name[0]}')"
         stub_query_last_insert_post = 'SET @id = LAST_INSERT_ID();'
         stub_query_response_post = 'SELECT hashtag_id FROM hashtags WHERE hashtag_id = @id'
         stub_query_post_hashtag = "INSERT INTO post_hashtags (hashtag_id,post_id) VALUES (#{@hashtags.hashtag_id},1)"
