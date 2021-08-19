@@ -64,6 +64,6 @@ class Posts
   end
 
   def check_hashtag
-    @description.downcase.scan(/#(\w+)/).flatten
+    @description.downcase.scan(/#(\w+)/).flatten.uniq
   end
 end
