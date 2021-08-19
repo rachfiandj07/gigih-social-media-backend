@@ -3,7 +3,7 @@
 require_relative '../config/connection'
 
 class Hashtags
-  attr_accessor :name, :hashtag_id
+  attr_reader :name, :hashtag_id
 
   def initialize(params)
     @hashtag_id = params[:hashtag_id]
@@ -29,7 +29,7 @@ class Hashtags
     return false unless valid?
 
     client = create_db_client
-    insert = client.query("INSERT INTO hashtags (name) VALUES ('#{@name}')")
+    insert = client.query("INSERT INTO hashtags (name) VALUES ('#{@name[0]}')")
     last_insert_id = client.query('SET @id = LAST_INSERT_ID();')
     response = client.query('SELECT hashtag_id FROM hashtags WHERE hashtag_id = @id')
 
