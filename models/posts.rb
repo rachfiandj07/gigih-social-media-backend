@@ -56,7 +56,6 @@ class Posts
     hashtags = check_hashtag
     hashtags.each do |data|
       hashtag = Hashtags.new(name: data)
-      hashtag.post
       hashtag.post_hashtag(client.last_id)
     end
 

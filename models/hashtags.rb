@@ -28,12 +28,15 @@ class Hashtags
   def post
     return false unless valid?
 
+    array = []
     client = create_db_client
     insert = client.query("INSERT INTO hashtags (name) VALUES ('#{@name[0]}')")
     last_insert_id = client.query('SET @id = LAST_INSERT_ID();')
     response = client.query('SELECT hashtag_id FROM hashtags WHERE hashtag_id = @id')
 
-    data = response
+    response.each do |res|
+      return res['hashtag_id']
+    end
   end
 
   def post_hashtag(post_id)
