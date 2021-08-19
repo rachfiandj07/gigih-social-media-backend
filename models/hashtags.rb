@@ -8,14 +8,14 @@ class Hashtags
   def initialize(params)
     @hashtag_id = params[:hashtag_id]
     @name = params[:name],
-    @createdAt = params[:createdAt],
-    @updatedAt = params[:updatedAt]
+            @createdAt = params[:createdAt],
+            @updatedAt = params[:updatedAt]
   end
 
   def valid?
-      return false if @name.nil?
+    return false if @name.nil?
 
-      true
+    true
   end
 
   def get_hashtag_id
@@ -31,7 +31,7 @@ class Hashtags
     client = create_db_client
     insert = client.query("INSERT INTO hashtags (name) VALUES ('#{@name}')")
     last_insert_id = client.query('SET @id = LAST_INSERT_ID();')
-    response = client.query('SELECT * FROM hashtags WHERE hashtag_id = @id')
+    response = client.query('SELECT hashtag_id FROM hashtags WHERE hashtag_id = @id')
 
     data = response
   end
@@ -39,6 +39,6 @@ class Hashtags
   def post_hashtag(post_id)
     client = create_db_client
 
-    insert = client.query("INSERT INTO post_hashtags (hashtag_id,post_id) VALUES (#{@hashtag_id},#{post_id})")
+    insert = client.query("INSERT INTO post_hashtags (hashtag_id,post_id) VALUES (#{post},#{post_id})")
   end
 end
