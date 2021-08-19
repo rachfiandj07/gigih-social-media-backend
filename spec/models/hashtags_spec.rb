@@ -41,7 +41,7 @@ describe Hashtags do
         stub_query_response = 'SELECT hashtag_id FROM hashtags WHERE hashtag_id = @id'
         expect(@stub_client).to receive(:query).with(stub_query)
         expect(@stub_client).to receive(:query).with(stub_query_last_insert)
-        expect(@stub_client).to receive(:query).with(stub_query_response).and_return(@response['hashtag_id'])
+        expect(@stub_client).to receive(:query).with(stub_query_response).and_return([{}])
 
         @hashtags.post
       end
@@ -56,9 +56,13 @@ describe Hashtags do
         stub_query_response_post = 'SELECT hashtag_id FROM hashtags WHERE hashtag_id = @id'
         stub_query_post_hashtag = "INSERT INTO post_hashtags (hashtag_id,post_id) VALUES (#{@hashtags.hashtag_id},1)"
 
+        response = [{
+          'hashtag_id' => 1
+        }]
+
         expect(@stub_client).to receive(:query).with(stub_query_post)
         expect(@stub_client).to receive(:query).with(stub_query_last_insert_post)
-        expect(@stub_client).to receive(:query).with(stub_query_response_post).and_return(@response['hashtag_id'])
+        expect(@stub_client).to receive(:query).with(stub_query_response_post).and_return(response)
         expect(@stub_client).to receive(:query).with(stub_query_post_hashtag)
 
         @hashtags.post_hashtag(1)
