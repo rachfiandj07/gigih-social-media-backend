@@ -7,6 +7,7 @@ require 'json'
 # controller import
 require_relative './controllers/usersController'
 require_relative './controllers/post_hashtagsController.rb'
+require_relative './controllers/postController.rb'
 
 set :prefix, '/api/v1'
 
@@ -36,4 +37,13 @@ namespace "#{settings.prefix}/hashtags" do
       status response['status']
       return response.to_json
     end
+end
+
+namespace "#{settings.prefix}/post" do
+  controller = PostController.new
+  post '/create' do
+    response = controller.create_post(params)
+    status response['status']
+    return response.to_json
+  end
 end
