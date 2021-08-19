@@ -4,9 +4,7 @@ class PostController
     def create_post(params)
         array = Array.new
         posts = Posts.new(params)
-        posts.get_new_insert.each do |res|
-            array.push(res)
-        end
+
         if posts.post == 201
             if params.key?("attachment") && params["attachment"].key?("filename")
                 file_name = params["attachment"]["filename"]
@@ -16,6 +14,9 @@ class PostController
                 File.open(file_path, 'wb') do |f|
                   f.write(file.read)
                 end
+            end
+            posts.get_new_insert.each do |res|
+                array.push(res)
             end
             return {
                 'message' => 'Success',
