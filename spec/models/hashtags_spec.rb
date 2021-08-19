@@ -38,10 +38,10 @@ describe Hashtags do
       it 'should create hashtag' do
         stub_query = "INSERT INTO hashtags (name) VALUES ('#{@hashtags.name}')"
         stub_query_last_insert = 'SET @id = LAST_INSERT_ID();'
-        stub_query_response = 'SELECT * FROM hashtags WHERE hashtag_id = @id'
+        stub_query_response = 'SELECT hashtag_id FROM hashtags WHERE hashtag_id = @id'
         expect(@stub_client).to receive(:query).with(stub_query)
         expect(@stub_client).to receive(:query).with(stub_query_last_insert)
-        expect(@stub_client).to receive(:query).with(stub_query_response).and_return([@response])
+        expect(@stub_client).to receive(:query).with(stub_query_response).and_return(@response['hashtag_id'])
 
         @hashtags.post
       end
@@ -51,8 +51,15 @@ describe Hashtags do
   context 'post hashtag' do
     describe 'given valid params' do
       it 'should create post hastag' do
-        stub_query = "INSERT INTO post_hashtags (hashtag_id,post_id) VALUES (#{@hashtags.hashtag_id},1)"
-        expect(@stub_client).to receive(:query).with(stub_query)
+        stub_query_post = "INSERT INTO hashtags (name) VALUES ('#{@hashtags.name}')"
+        stub_query_last_insert_post = 'SET @id = LAST_INSERT_ID();'
+        stub_query_response_post = 'SELECT hashtag_id FROM hashtags WHERE hashtag_id = @id'
+        stub_query_post_hashtag = "INSERT INTO post_hashtags (hashtag_id,post_id) VALUES (#{@hashtags.hashtag_id},1)"
+
+        expect(@stub_client).to receive(:query).with(stub_query_post)
+        expect(@stub_client).to receive(:query).with(stub_query_last_insert_post)
+        expect(@stub_client).to receive(:query).with(stub_query_response_post).and_return(@response['hashtag_id'])
+        expect(@stub_client).to receive(:query).with(stub_query_post_hashtag)
 
         @hashtags.post_hashtag(1)
       end
