@@ -37,7 +37,7 @@ class PostHashtags
             WHERE
                 user_posts.createdAt > DATE_SUB(NOW(), INTERVAL 24 HOUR)
             GROUP BY
-                hashtags.hashtag_id
+                hashtags.`name`
             ORDER BY
                 count DESC
             LIMIT 5
