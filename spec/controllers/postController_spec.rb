@@ -42,5 +42,26 @@ describe PostController do
                 expect(result).to eq(response)
             end 
         end
+        context 'given invalid params' do
+            it 'should return response status 401' do
+                response = {
+                    'message' => 'Failed',
+                    'status' => 401,
+                    'method' => 'POST',
+                }
+
+                params = {
+                    'user_id' => 1,
+                    'description' => nil,
+                }
+
+                allow(Users).to receive(:new).with(params).and_return(@stub_client)
+                allow(@stub_client).to receive(:get_new_insert).and_return([])
+                allow(@stub_client).to receive(:post).and_return(false)
+
+                result = @controller.create_post(params)
+                expect(result).to eq(response)
+            end 
+        end
     end
 end
