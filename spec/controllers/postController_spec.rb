@@ -34,9 +34,9 @@ describe PostController do
                     'parent_id' => nil
                 }
 
-                allow(Users).to receive(:new).with(params).and_return(@stub_client)
+                allow(Posts).to receive(:new).with(params).and_return(@stub_client)
                 allow(@stub_client).to receive(:get_new_insert).and_return(response['data'])
-                allow(@stub_client).to receive(:post).and_return(200)
+                allow(@stub_client).to receive(:post).and_return(201)
 
                 result = @controller.create_post(params)
                 expect(result).to eq(response)
@@ -55,7 +55,7 @@ describe PostController do
                     'description' => nil,
                 }
 
-                allow(Users).to receive(:new).with(params).and_return(@stub_client)
+                allow(Posts).to receive(:new).with(params).and_return(@stub_client)
                 allow(@stub_client).to receive(:get_new_insert).and_return([])
                 allow(@stub_client).to receive(:post).and_return(false)
 
