@@ -35,7 +35,7 @@ class Posts
     return false unless valid?
 
     client = create_db_client
-    insert = client.query("INSERT INTO posts (user_id, description, attachment, parent_id) VALUES (#{@user_id},'#{@description}','#{@attachment}',#{@parent_id})")
+    insert = client.query("INSERT INTO user_posts (user_id, description, attachment, parent_id) VALUES (#{@user_id},'#{@description}','#{@attachment}',#{@parent_id})")
 
     hashtags = check_hashtag
     hashtags.each do |data|
@@ -51,7 +51,7 @@ class Posts
     return false unless valid?
 
     client = create_db_client
-    insert = client.query("INSERT INTO posts (user_id, description, attachment, parent_id) VALUES (#{@user_id},'#{@description}','#{@attachment}',#{@parent_id})")
+    insert = client.query("INSERT INTO user_posts (user_id, description, attachment, parent_id) VALUES (#{@user_id},'#{@description}','#{@attachment}',#{@parent_id})")
 
     hashtags = check_hashtag
     hashtags.each do |data|
@@ -60,7 +60,7 @@ class Posts
       hashtag.post_hashtag(client.last_id)
     end
 
-    return 200 if valid?
+    return 201 if valid?
   end
 
   def check_hashtag
