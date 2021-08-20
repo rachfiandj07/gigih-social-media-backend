@@ -4,7 +4,7 @@
 -- https://tableplus.com/
 --
 -- Database: twitter_backend_project
--- Generation Time: 2021-08-17 02:04:53.9920
+-- Generation Time: 2021-08-20 22:12:08.1780
 -- -------------------------------------------------------------
 
 
@@ -22,15 +22,15 @@ CREATE TABLE `hashtags` (
   `hashtag_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updatedAt` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`hashtag_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `post_hashtags` (
   `hashtag_id` int DEFAULT NULL,
   `post_id` int DEFAULT NULL,
   `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updatedAt` datetime DEFAULT CURRENT_TIMESTAMP,
   KEY `hashtag_id` (`hashtag_id`),
   KEY `post_id` (`post_id`),
   CONSTRAINT `post_hashtags_ibfk_1` FOREIGN KEY (`hashtag_id`) REFERENCES `hashtags` (`hashtag_id`),
@@ -42,13 +42,13 @@ CREATE TABLE `user_posts` (
   `user_id` int NOT NULL,
   `description` text,
   `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `attachment` varchar(255) DEFAULT NULL,
+  `updatedAt` datetime DEFAULT CURRENT_TIMESTAMP,
+  `attachment` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `parent_id` int DEFAULT NULL,
   PRIMARY KEY (`post_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `user_posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `users` (
   `user_id` int NOT NULL AUTO_INCREMENT,
@@ -58,7 +58,7 @@ CREATE TABLE `users` (
   `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 

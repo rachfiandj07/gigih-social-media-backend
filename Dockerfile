@@ -1,13 +1,16 @@
 FROM ruby:3.0.1-alpine
 
-WORKDIR /usr/src/app
+RUN apk add --update \
+    build-base \
+    mariadb-dev \
+    && rm -rf /var/cache/apk/*
 
-COPY Gemfile* ./
+RUN gem install bundler
 
+WORKDIR /myapp
+COPY Gemfile* /myapp/
 RUN bundle install
 
-COPY . .
+WORKDIR /myapp
+COPY . /myapp
 
-EXPOSE 4567
-
-CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "4567"]
