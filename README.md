@@ -12,7 +12,7 @@ Developing a social media application which can be used to share information wit
 ### Installation Run without Docker
 
 1. Fork and clone repo to your local machine
-2. Use `bundle install` to install dependencies.
+2. Use `bundle install` to install dependencies or Use `bundle install --path vendor/bundle`
 3. Create `.env` file based on `.env.example`
 4. `source .env` file
 5. Run with `ruby main.rb` or `rackup -p 4567`
@@ -35,14 +35,14 @@ There are 4 commit type :
 
 ### Installation run with Docker Single Container
 
-1. run `sh setup.sh`
+1. run `sh ./lib/setup.sh`
 2. run `docker ps` to make sure your app running locally
 3. Access your app through `localhost:4567/`
 
 ### Installation run with Docker Single Container with MySql
 
 1. run `docker-compose run app sinatra new . --force --database=mysql --skip-bundle `
-2. run `sh mysql-docker.sh`
+2. run `sh ./lib/mysql-docker.sh`
 3. run `docker-compose build`
 4. run `docker-compose up`
 5. access your app through `localhost:4567/`
