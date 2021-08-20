@@ -30,22 +30,6 @@ class Posts
     data = get_new_insert
   end
 
-  def comment
-    return false unless valid?
-
-    client = create_db_client
-    insert = client.query("INSERT INTO user_posts (user_id, description, attachment, parent_id) VALUES (#{@user_id},'#{@description}','#{@attachment}',#{@parent_id})")
-
-    hashtags = check_hashtag
-    hashtags.each do |data|
-      hashtag = Hashtags.new(name: data)
-      hashtag.post
-      hashtag.post_hashtag(client.last_id)
-    end
-
-    return 201 if valid?
-  end
-
   def post
     return false unless valid?
 
