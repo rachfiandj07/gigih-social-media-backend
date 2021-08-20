@@ -7,45 +7,6 @@ Gojek Social Media Backend Project
 Developing a social media application which can be used to share information with other people. This application will only be used by people that work in a certain company so we cannot use existing public social media. Using Sinatra
 
 ### Project Structure
-.
-|-- ./spec.md
-|-- ./LICENSE
-|-- ./spec
-|   |-- ./spec/config
-|   |   `-- ./spec/config/connection_spec.rb
-|   |-- ./spec/spec_helper.rb
-|   |-- ./spec/test_helper.rb
-|   |-- ./spec/models
-|   |   |-- ./spec/models/users_spec.rb
-|   |   |-- ./spec/models/hashtags_spec.rb
-|   |   |-- ./spec/models/post_hashtags_spec.rb
-|   |   -- ./spec/models/posts_spec.rb
-|   -- ./spec/controllers
-|       |-- ./spec/controllers/post_hashtagsController_spec.rb
-|       |-- ./spec/controllers/postController_spec.rb
-|       -- ./spec/controllers/usersController_spec.rb
-|-- ./public
-|-- ./Gemfile.lock
-|-- ./main.rb
-|-- ./config.ru
-|-- ./setup.sh
-|-- ./config
-|   -- ./config/connection.rb
-|-- ./mysql-docker.sh
-|-- ./Gemfile
-|-- ./docker-compose.yml
-|-- ./Dockerfile
-|-- ./controllers
-|   |-- ./controllers/post_hashtagsController.rb
-|   |-- ./controllers/postController.rb
-|   -- ./controllers/usersController.rb
-|-- ./models
-|   |-- ./models/hashtags.rb
-|   |-- ./models/post_hashtags.rb
-|   |-- ./models/posts.rb
-|   -- ./models/users.rb
-|-- ./README.md
--- ./coverage 
 
 ### Installation Run without Docker
 
