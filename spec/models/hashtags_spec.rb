@@ -4,7 +4,7 @@ require_relative '../../models/hashtags'
 
 describe Hashtags do
   before :each do
-    @stub_client = double()
+    @stub_client = double
     @hashtags = Hashtags.new(hashtag_id: 1, name: 'gigih', createdAt: '2021-08-15 00:51:03',
                              updatedAt: '2021-08-15 00:51:03')
     @response = {
@@ -17,19 +17,19 @@ describe Hashtags do
   end
 
   context 'valid' do
-      context 'given valid params' do
-          it 'should return true' do
-              expect(@hashtags.valid?).to eq(true)
-          end
+    context 'given valid params' do
+      it 'should return true' do
+        expect(@hashtags.valid?).to eq(true)
       end
+    end
   end
 
   context 'get hashtag id' do
     it 'should return hashtag id search by name' do
-        stub_query = "SELECT hashtag_id FROM hashtags WHERE hashtags.`name` LIKE '%#{@hashtags.name}%'"
-        expect(@stub_client).to receive(:query).with(stub_query).and_return(@response['hashtag_id'])
+      stub_query = "SELECT hashtag_id FROM hashtags WHERE hashtags.`name` LIKE '%#{@hashtags.name}%'"
+      expect(@stub_client).to receive(:query).with(stub_query).and_return(@response['hashtag_id'])
 
-        @hashtags.get_hashtag_id
+      @hashtags.get_hashtag_id
     end
   end
 

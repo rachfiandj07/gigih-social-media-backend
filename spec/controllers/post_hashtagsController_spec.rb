@@ -36,24 +36,24 @@ describe PostHashtagsController do
       end
     end
     context 'with unavailable hashtag' do
-        it 'should return 404 and hashtag not found' do
-            params = {
-                'name' => 'GrabVsGojek'
-            }
-      
-            response = {
-                'message' => 'Success',
-                'status' => 200,
-                'method' => 'POST',
-                'data' => 'Hashtag is not available'
-            }
-      
-            allow(@stub_client).to receive(:get_post_contain_hashtag).and_return([])
-            allow(PostHashtags).to receive(:new).and_return(@stub_client)
-      
-            result = @controller.search_post_hashtag(params)
-            expect(result).to eq(response)
-        end
+      it 'should return 404 and hashtag not found' do
+        params = {
+          'name' => 'GrabVsGojek'
+        }
+
+        response = {
+          'message' => 'Success',
+          'status' => 200,
+          'method' => 'POST',
+          'data' => 'Hashtag is not available'
+        }
+
+        allow(@stub_client).to receive(:get_post_contain_hashtag).and_return([])
+        allow(PostHashtags).to receive(:new).and_return(@stub_client)
+
+        result = @controller.search_post_hashtag(params)
+        expect(result).to eq(response)
+      end
     end
   end
   describe 'get list trending hashtag' do

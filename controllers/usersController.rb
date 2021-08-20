@@ -4,7 +4,7 @@ require_relative '../models/users'
 
 class UsersController
   def register(params)
-    array = Array.new
+    array = []
     users = Users.new(params)
     if users.register == 200
       users.get_new_user.each do |res|

@@ -4,7 +4,7 @@ require_relative '../../models/users'
 
 describe Users do
   before :each do
-    @stub_client = double()
+    @stub_client = double
     @users = Users.new(user_id: 1, username: '@naufalrdj', bio: 'Hello', email: 'test@gmail.com',
                        createdAt: '2021-08-15 00:51:03', updatedAt: '2021-08-15 00:51:03')
     @response = {
@@ -20,7 +20,7 @@ describe Users do
 
   describe 'get new user' do
     it 'should return a new data user' do
-      stub_query = "SELECT * FROM users ORDER BY user_id DESC LIMIT 0, 1"
+      stub_query = 'SELECT * FROM users ORDER BY user_id DESC LIMIT 0, 1'
 
       expect(@stub_client).to receive(:query).with(stub_query).and_return([@response])
 
@@ -45,7 +45,7 @@ describe Users do
     context 'given invalid params' do
       it 'should not save user data' do
         users = Users.new(user_id: nil, username: nil, bio: nil, email: 'foo#mail.com', createdAt: nil, updatedAt: nil)
-        
+
         expect(users.register).to eq(false)
       end
     end

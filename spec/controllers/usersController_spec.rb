@@ -4,14 +4,13 @@ require_relative '../../controllers/usersController'
 
 describe UsersController do
   before :each do
-    @stub_client = double()
+    @stub_client = double
     @controller = UsersController.new
   end
 
   describe 'register user' do
     context 'given valid params' do
       it 'should return response status 200' do
-
         response = {
           'message' => 'Success',
           'status' => 200,

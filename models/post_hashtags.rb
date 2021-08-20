@@ -23,8 +23,8 @@ class PostHashtags
 
   def self.get_list_trending_hashtag
     client = create_db_client
-    query = 
-            "
+    query =
+      "
             SELECT
                 hashtags.hashtag_id,
                 COUNT(hashtags.hashtag_id) AS count,
