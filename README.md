@@ -7,11 +7,10 @@ Gojek Social Media Backend Project
 Developing a social media application which can be used to share information with other people. This application will only be used by people that work in a certain company so we cannot use existing public social media. Using Sinatra
 
 ### Project Structure
-
+`
 .
 |-- ./spec.md
 |-- ./LICENSE
-|-- ./social-media-db-schema-design\ (1)\ (1).png
 |-- ./spec
 |   |-- ./spec/config
 |   |   `-- ./spec/config/connection_spec.rb
@@ -27,17 +26,12 @@ Developing a social media application which can be used to share information wit
 |       |-- ./spec/controllers/postController_spec.rb
 |       `-- ./spec/controllers/usersController_spec.rb
 |-- ./public
-|   `-- ./public/files
-|       |-- ./public/files/readme.md
-|       |-- ./public/files/sample.env
-|       `-- ./public/files/Jenkinsfile
 |-- ./Gemfile.lock
 |-- ./main.rb
 |-- ./config.ru
 |-- ./setup.sh
 |-- ./config
 |   `-- ./config/connection.rb
-|-- ./twitter_backend_project.sql
 |-- ./mysql-docker.sh
 |-- ./Gemfile
 |-- ./docker-compose.yml
@@ -51,7 +45,6 @@ Developing a social media application which can be used to share information wit
 |   |-- ./models/post_hashtags.rb
 |   |-- ./models/posts.rb
 |   `-- ./models/users.rb
-|-- ./tree.sh
 |-- ./README.md
 `-- ./coverage 
 ### Installation Run without Docker
