@@ -50,3 +50,8 @@ There are 4 commit type :
 ### Schema Design
 
 ![alt text](https://github.com/rachfiandj07/gojek-social-media-backend/blob/main/social-media-db-schema-design%20(1)%20(1).png)
+
+## Production URL
+
+You can access here the production on
+`http://34.92.229.122:4567/`
