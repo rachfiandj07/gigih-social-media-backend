@@ -16,3 +16,13 @@ gem 'json', '~> 2.5.1'
 gem 'rubocop', '~> 1.19', require: false
 
 gem 'sinatra-namespace', '~> 1.0'
+
+gem 'thin'
+
+gem 'puma'
+
+gem 'reel'
+
+gem 'http'
+
+gem 'webrick'
