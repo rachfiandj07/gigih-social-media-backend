@@ -6,10 +6,10 @@ class UsersController
   def register(params)
     array = Array.new
     users = Users.new(params)
-    users.get_new_user.each do |res|
-      array.push(res)
-    end
     if users.register == 200
+      users.get_new_user.each do |res|
+        array.push(res)
+      end
       {
         'message' => 'Success',
         'status' => 200,
