@@ -8,6 +8,7 @@ Developing a social media application which can be used to share information wit
 
 ### Project Structure
 
+![alt text](https://github.com/rachfiandj07/gojek-social-media-backend/blob/main/Screen%20Shot%202021-08-21%20at%2000.00.57.png)
 ### Installation Run without Docker
 
 1. Fork and clone repo to your local machine
