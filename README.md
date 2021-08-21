@@ -7,6 +7,12 @@ Generasi Gigih Social Media Backend Project
 ### Introduction
 
 Developing a social media application which can be used to share information with other people. This application will only be used by people that work in a certain company so we cannot use existing public social media. Using Sinatra
+
+### Project Scope
+
+[SPEC.MD](https://github.com/rachfiandj07/gigih-social-media-backend/blob/main/spec.md)
+
+
 ### Installation Run without Docker
 
 1. Fork and clone repo to your local machine
