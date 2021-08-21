@@ -2,13 +2,15 @@
 
 Generasi Gigih Social Media Backend Project
 
+![alt text](https://github.com/rachfiandj07/gigih-social-media-backend/blob/main/assets/Header%20%23GenerasiGIGIH%20(1).png)
+
 ### Introduction
 
 Developing a social media application which can be used to share information with other people. This application will only be used by people that work in a certain company so we cannot use existing public social media. Using Sinatra
 
 ### Project Structure
 
-![alt text](https://github.com/rachfiandj07/gojek-social-media-backend/blob/main/Screen%20Shot%202021-08-21%20at%2000.00.57.png)
+![alt text](https://github.com/rachfiandj07/gigih-social-media-backend/blob/main/assets/Screen%20Shot%202021-08-21%20at%2000.00.57.png)
 ### Installation Run without Docker
 
 1. Fork and clone repo to your local machine
@@ -51,7 +53,12 @@ There are 4 commit type :
 
 ![alt text](https://github.com/rachfiandj07/gigih-social-media-backend/blob/main/assets/social-media-db-schema-design%20(1)%20(1).png)
 
-## Production URL
+### API Documentation
 
-You can access here the production on
-`http://34.92.229.122:4567/`
+For this project, Postman Collection was used to test the API Endpoint
+- Go check this link [here !](https://www.postman.com/naufalrdj/workspace/gigih-social-media-backend-project/overview)
+- Go check this link for JSON export [here !](https://www.postman.com/collections/e82fb5fa959ad12813bf)
+
+### Production URL
+
+You can access here the production on [Production Link](http://34.92.229.122:4567/)
