@@ -2,6 +2,8 @@
 
 Generasi Gigih Social Media Backend Project
 
+![alt text](https://github.com/rachfiandj07/gigih-social-media-backend/blob/main/assets/Header%20%23GenerasiGIGIH%20(1).png)
+
 ### Introduction
 
 Developing a social media application which can be used to share information with other people. This application will only be used by people that work in a certain company so we cannot use existing public social media. Using Sinatra
