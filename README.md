@@ -53,7 +53,13 @@ There are 4 commit type :
 
 ![alt text](https://github.com/rachfiandj07/gigih-social-media-backend/blob/main/assets/social-media-db-schema-design%20(1)%20(1).png)
 
-## Production URL
+### API Documentation
+
+For this project, Postman Collection was used to test the API Endpoint
+- Go check this link [here !](https://www.postman.com/naufalrdj/workspace/gigih-social-media-backend-project/overview)
+- Go check this link for JSON export [here !](https://www.postman.com/collections/e82fb5fa959ad12813bf)
+
+### Production URL
 
 You can access here the production on
 `http://34.92.229.122:4567/`
