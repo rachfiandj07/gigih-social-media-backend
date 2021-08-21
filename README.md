@@ -1,6 +1,6 @@
-# gojek-social-media-backend
+# gigih-social-media-backend
 
-Gojek Social Media Backend Project
+Generasi Gigih Social Media Backend Project
 
 ### Introduction
 
