@@ -1,4 +1,4 @@
-# Specifications for the Gojek Social Media Backend Project
+# Specifications for the Gigih Social Media Backend Project
 
 Specs:
 - [x] All features should work, proven by unit tests with at least 90% coverage for models and controllers Should pass all Postman collections submitted in the repository
