@@ -13,7 +13,8 @@ Developing a social media application which can be used to share information wit
 2. Use `bundle install` to install dependencies or Use `bundle install --path vendor/bundle`
 3. Create `.env` file based on `.env.example`
 4. `source .env` file
-5. Run with `ruby main.rb` or `rackup -p 4567`
+5. Create folder `public/files` run `mkdir public` and `mkdir files` inside `public`
+6. Run with `ruby main.rb` or `rackup -p 4567`
 ### Running Linter
 
 `rubocop -a` or `rubocop --auto-correct-all`
@@ -35,7 +36,9 @@ There are 4 commit type :
 
 1. run `sh ./lib/setup.sh`
 2. run `docker ps` to make sure your app running locally
-3. Access your app through `localhost:4567/`
+3. run `docker exec -it YOURCONTAINERID bash`
+4. Create folder `public/files` `mkdir public` and `mkdir files` inside `public`
+5. Access your app through `localhost:4567/`
 
 ### Installation run with Docker Single Container with MySql
 
@@ -43,7 +46,9 @@ There are 4 commit type :
 2. run `sh ./lib/mysql-docker.sh`
 3. run `docker-compose build`
 4. run `docker-compose up`
-5. access your app through `localhost:4567/`
+5. run `docker exec -it YOUCONTAINERID bash`
+6. Create folder `public/files` `mkdir public` and `mkdir files` inside `public`
+8. access your app through `localhost:4567/`
 
 ### Schema Design
 
