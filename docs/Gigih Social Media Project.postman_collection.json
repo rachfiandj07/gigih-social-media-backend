@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "fa147d29-a1ed-49d2-bc00-afa6fd6f3d61",
+		"name": "Gigih Social Media Project",
+		"description": "# Introduction \n\nDeveloping a social media application which can be used to share information with other people. This application will only be used by people that work in a certain company so we cannot use existing public social media. Using Sinatra\n\n# Overview\nThe applications cover these functions:\n1. As a user, I want to save my username, email, and bio description.\n    - Authentication and authorization is out of scope of this story and you don’t need to implement them\n2. As a user, I want to post a text that might contain hashtag(s).\n    - Maximum limit of a text is 1000 characters\n    - A hashtag is a text that is followed by # symbol, for instance: #generasigigih\n3. As a user, I want to see all posts that contain a certain hashtag.\n    - A user can only filter by one hashtag at a time\n4. As a user, I want to see the list of trending hashtags.\n    - Trending hashtags are the top 5 most posted hashtags in the past 24 hours\n    - A post containing multiple instances of a hashtag only counts as 1 occurrence for trending hashtags calculation\n5. As a user, I want to comment on a post\n    - A comment can contain hashtag(s)\n    - A hashtag occurrence in a comment is counted in trending hashtags calculation\n6. As a user, I want to attach things to a post\n    - Three kinds of attachment are allowed: pictures (jpg, png, gif), video (mp4), and file (any other extensions outside of pictures and videos)\n\n# Authentication\nAuthentication and authorization is out of scope of this story, so the user won't need to pass authentication or authorization\n\n# Error Codes\n401 and 500.\n\n- 401 happens when the user give invalid params\n- 500 happens when the server is having an error",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Register",
+			"item": [
+				{
+					"name": "User Registration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check User Registration Response\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.user.username).to.eql(\"naufalrdj\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "@naufalrdj",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "Hi!",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "naufal@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.92.229.122:4567/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"34",
+								"92",
+								"229",
+								"122"
+							],
+							"port": "4567",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						},
+						"description": "This endpoint required 3 parameter\n1. username\n2. bio\n3. email"
+					},
+					"response": []
+				}
+			],
+			"description": "Register a new User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Search Hashtag",
+			"item": [
+				{
+					"name": "Search Hashtag",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://34.92.229.122:4567/api/v1/hashtags/details?name=gigih",
+							"protocol": "http",
+							"host": [
+								"34",
+								"92",
+								"229",
+								"122"
+							],
+							"port": "4567",
+							"path": [
+								"api",
+								"v1",
+								"hashtags",
+								"details"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "gigih"
+								}
+							]
+						},
+						"description": "This endpoint requires 1 query parameter\n1. name"
+					},
+					"response": []
+				}
+			],
+			"description": "Search a stored Hashtag",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Search Trending",
+			"item": [
+				{
+					"name": "Get Trending Hashtag",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://34.92.229.122:4567/api/v1/hashtags/trending",
+							"protocol": "http",
+							"host": [
+								"34",
+								"92",
+								"229",
+								"122"
+							],
+							"port": "4567",
+							"path": [
+								"api",
+								"v1",
+								"hashtags",
+								"trending"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Search trending hashtag"
+		},
+		{
+			"name": "Create Post",
+			"item": [
+				{
+					"name": "Create Post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "99",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Semangat selalu generasi #gigih #GiGih",
+									"type": "text"
+								},
+								{
+									"key": "attachment",
+									"type": "file",
+									"src": "/Users/naufalrdj/Downloads/zeldasky.jpeg"
+								},
+								{
+									"key": "parent_id",
+									"value": "null",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.92.229.122:4567/api/v1/post/create",
+							"protocol": "http",
+							"host": [
+								"34",
+								"92",
+								"229",
+								"122"
+							],
+							"port": "4567",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"create"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "gigih",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This endpoint requires 3 parameter\n1. user id\n2. description\n3. attachment"
+					},
+					"response": []
+				}
+			],
+			"description": "Create Post Tweet",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Create Comment",
+			"item": [
+				{
+					"name": "Create Comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "99",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ayo semangat juga #semangat45 #merdeka",
+									"type": "text"
+								},
+								{
+									"key": "attachment",
+									"type": "file",
+									"src": "/Users/naufalrdj/Downloads/Header #GenerasiGIGIH (1).png"
+								},
+								{
+									"key": "parent_id",
+									"value": "149",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.92.229.122:4567/api/v1/post/create",
+							"protocol": "http",
+							"host": [
+								"34",
+								"92",
+								"229",
+								"122"
+							],
+							"port": "4567",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"create"
+							]
+						},
+						"description": "This endpoint requires 4 parameter\n1. user id\n2. description\n3. attachment\n4. parent_id "
+					},
+					"response": []
+				}
+			],
+			"description": "Create comment on Tweet",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
