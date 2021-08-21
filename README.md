@@ -49,7 +49,7 @@ There are 4 commit type :
 
 ### Schema Design
 
-![alt text](https://github.com/rachfiandj07/gojek-social-media-backend/blob/main/social-media-db-schema-design%20(1)%20(1).png)
+![alt text](https://github.com/rachfiandj07/gigih-social-media-backend/blob/main/assets/social-media-db-schema-design%20(1)%20(1).png)
 
 ## Production URL
 
